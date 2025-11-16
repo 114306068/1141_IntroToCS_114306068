@@ -1,0 +1,115 @@
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #efefef;
+    color: #222;
+}
+
+.banner {
+    background-color: blue;
+    text-align: center;
+    padding: 25px 10px;
+    color: white;
+}
+
+.banner h1 {
+    margin: 0;
+    font-size: 32px;
+    font-family: "Trebuchet MS", sans-serif;
+}
+
+.banner p {
+    margin: 5px 0 0 0;
+    font-size: 15px;
+}
+
+
+.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    background-color: #222;
+
+    display: flex;
+    justify-content: center;
+
+    
+    position: absolute;  
+    top: 6em;            
+    left: 1em;           
+    width:100em;          
+}
+
+.navbar li {
+    color: white;
+    padding: 14px 30px;
+    cursor: pointer;
+
+    position: relative;
+}
+
+.navbar li:hover {
+    background-color: #444;
+}
+
+/* 下拉選單預設隱藏 */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: darkred;
+
+    top: 48px;
+    left: 0;
+    list-style-type: none;
+    padding: 0;
+    min-width: 170px;
+    border-radius: 4px;
+
+    z-index: 20; /* 保證不會被遮住 */
+}
+
+/* hover 顯示選單 */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu li {
+    padding: 12px 15px;
+    color: white;
+}
+
+.dropdown-menu li:hover {
+    background-color: #444;
+}
+
+.content {
+    padding: 20px;
+    font-size: 16px;
+}
+
+.content a {
+    color: pink;
+    background-color: lightgray;
+    padding: 3px 4px;
+    border-radius: 3px;
+    text-decoration: none;
+}
+@media all {
+    body {
+        border: 3px solid #888;  
+    }
+}
+
+@media print {
+    body {
+        background-color: white;  
+        color: black;            
+        border: none;             
+    }
+
+    .navbar {
+        display: none;           
+    }
+}
