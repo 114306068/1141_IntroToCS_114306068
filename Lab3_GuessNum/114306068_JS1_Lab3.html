@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Guess Number</title>
+</head>
+<body>
+    <h1>114306068_Number Guessing Game</h1>
+
+    <div id="result"></div>
+
+    <script>
+        var answer = Math.floor(Math.random() * 100) + 1;
+        var min = 1;
+        var max = 100;
+        var chances = 7;
+
+        while (chances > 0) {
+
+            var input = prompt(
+                "請輸入 " + min + " 到 " + max + " 之間的數字\n" +
+                "剩餘次數：" + chances
+            );
+
+            // 空值檢查
+            if (input === null || input.trim() === "") {
+                alert("請輸入數字！");
+                continue;
+            }
+
+            // 數字檢查
+            if (isNaN(input)) {
+                alert("必須是數字！");
+                continue;
+            }
+
+            var guess = Number(input);
+
+            // 範圍檢查
+            if (guess < min || guess > max) {
+                alert("請輸入有效範圍內的數字！");
+                continue;
+            }
+
+            // 判斷正確與否
+            if (guess === answer) {
+                alert("Correct!");
+                document.getElementById("result").innerHTML =
+                    '<img src="correct (.jpg" width="300">';
+                break;
+            } else {
+                chances--;
+
+                if (guess > answer) {
+                    max = guess;
+                } else {
+                    min = guess;
+                }
+
+                // 用完 7 次還沒猜到
+                if (chances === 0) {
+                    alert("You lose! 正確答案是：" + answer);
+                    document.getElementById("result").innerHTML =
+                        '<img src="wrong.jpg" width="300">';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
