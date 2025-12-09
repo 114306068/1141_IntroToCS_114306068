@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>1A2B Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        h1 {
+            font-size: 30px;
+            font-weight: bold;
+        }
+        #container {
+            margin-top: 20px;
+        }
+        #recordBox {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            width: 350px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>114306068_1A2B</h1>
+
+<div id="container">
+    <label>Enter 4 unique numbers </label>
+    <input type="text" id="guessInput" style="width:150px;">
+    <button onclick="play()">Guess!</button>
+</div>
+
+<div id="recordBox">
+    <strong>Game Record：</strong><br>
+    <div id="record"></div>
+</div>
+
+<script>
+// 生成不重複四位數
+function generateAnswer() {
+    let digits = [0,1,2,3,4,5,6,7,8,9];
+    let ans = "";
+
+    for (let i=0; i<4; i++) {
+        let idx = Math.floor(Math.random() * digits.length);
+        ans += digits[idx];
+        digits.splice(idx, 1);
+    }
+    return ans;
+}
+
+let answer = generateAnswer();
+let count = 0;
+
+// 驗證輸入是否合規
+function isValid(str) {
+    if (str.length !== 4) return false;
+    if (isNaN(str)) return false;
+
+    let set = new Set(str);
+    return set.size === 4;
+}
+
+// 回傳 XAYB
+function checkAB(guess, ans) {
+    let A = 0, B = 0;
+
+    for (let i=0; i<4; i++) {
+        if (guess[i] === ans[i]) A++;
+        else if (ans.includes(guess[i])) B++;
+    }
+    return A + "A" + B + "B";
+}
+
+// 每次按下 Guess 的動作
+function play() {
+    let inputBox = document.getElementById("guessInput");
+    let guess = inputBox.value.trim();
+
+    if (!isValid(guess)) {
+        alert("錯誤！請輸入 4 位不重複的數字！");
+        return;
+    }
+
+    count++;
+
+    let result = checkAB(guess, answer);
+
+    document.getElementById("record").innerHTML +=
+        "第" + count + "次: " + guess + " → " + result + "<br>";
+
+    if (result === "4A0B") {
+        alert("恭喜答對！總共猜了 " + count + " 次");
+    }
+
+    inputBox.value = "";
+}
+</script>
+
+</body>
+</html>
