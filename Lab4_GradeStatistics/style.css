@@ -1,0 +1,50 @@
+body {
+font-family: Arial, sans-serif;
+padding: 40px;
+}
+
+
+h1 {
+text-align: center;
+margin-bottom: 30px;
+}
+
+
+.input-area {
+margin-bottom: 20px;
+}
+
+
+.input-area input {
+width: 150px;
+padding: 6px;
+margin-right: 10px;
+}
+
+
+button {
+padding: 6px 12px;
+}
+
+
+table {
+width: 100%;
+border-collapse: collapse;
+}
+
+
+th, td {
+border: 1px solid #e0e0e0;
+padding: 10px;
+text-align: center;
+}
+
+
+thead {
+background-color: #f8f8f8;
+}
+
+
+tfoot {
+font-weight: bold;
+}
